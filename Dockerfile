@@ -11,5 +11,5 @@ ENV TZ=Asia/Shanghai LANG=C.UTF-8
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 WORKDIR /data
 COPY --from=builder /data/leaf-server/target/leaf.jar .
-ENV SEGMENT_ENABLE=true JDBC_URL=127.0.0.1:3306/leaf JDBC_USERNAME=root JDBC_PASSWORD=123456 
+ENV SEGMENT_ENABLE=true JDBC_URL=mysql.service:3306/leaf JDBC_USERNAME=root JDBC_PASSWORD=123456 
 CMD ["java","-jar","leaf.jar"]
